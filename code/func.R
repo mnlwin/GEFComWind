@@ -12,7 +12,7 @@ setwd(fn.dir)
 for (f in list.files(pattern = "*.R")) {
   source(f)
 }
-cat("All functions for project have been loaded from folder: ", getwd())
+cat("All functions for project have been loaded from folder: ", getwd(),'\n')
 
 setwd(working.dir)
 rm(working.dir, fn.dir, f)

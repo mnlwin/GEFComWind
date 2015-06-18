@@ -6,7 +6,8 @@ rm(list=ls())
 cat("\014")
 
 #  Set any global variables here  ---------------------------------------------
-task = 14                    # Task Week
+task = 14                    # week for raw data
+trainingWeek = 13            # week for training 
 prevTrain.length = 15336     # number of rows in the training data for last week
 
 #  Run the code  --------------------------------------------------------------
