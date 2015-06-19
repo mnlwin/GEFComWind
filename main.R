@@ -6,16 +6,20 @@ rm(list=ls())
 cat("\014")
 
 #  Set any global variables here  ---------------------------------------------
-task = 15                    # week for raw data
-trainWeek = 15            # week for training 
+task = 15                   # week for raw data
+trainWeek = 14              # week for training 
+nFarms = 1:10               # specify which farms to train and test (1-10)
 
 #  Run the code  --------------------------------------------------------------
 source("code/func.R")               #  load all functions
 source("code/load.R")               #  load raw data and required libraries
-# source("code/clean.R")              #  clean raw data and generate feature matrix
-# #source("code/doCV.R")
-# #source("code/doPrevScore.R")
-# source("code/dosubmit.R")
+source("code/clean.R")              #  clean raw data and generate feature matrix
+
+source("code/train_and_predict.R")
+# source("code/calc_empErrQuantiles.R")
+source("code/predict_quantiles.R")
+source("code/score.R")
+# source("code/plots.R")
 
 
 

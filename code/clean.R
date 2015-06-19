@@ -40,7 +40,9 @@ for (i in 1:10){
 rm(test.raw, train.raw, amp100,i,rows.outliers,x,any,rows)
 
 writeLines('Data has been cleaned, raw data removed')
-readline("Press <return to continue ") 
+# readline("Press <return to continue ") 
+
+#save(testX, testY, trainX, trainY, file = "cleanedData.RData")
 
 
 

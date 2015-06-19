@@ -74,8 +74,8 @@ TrainPredict <- function (trainX, trainY, testX, testY,
   
   #  calculate RMSE  ----------------------------------------------------------
   RMSE.test = c()
-  for (i in 1:10){  
-    RMSE.test[i] = sqrt(mean((predictions.test[[i]]$predictions-testY[[i]]$TARGETVAR)^2))
+  for (i in farms){  
+    RMSE.test[i] = sqrt(mean((predictions.test[[i]]$predictions-testY[[i]]$TARGETVAR)^2,na.rm =T))
   }
   print(data.frame(RMSE.test))
   
