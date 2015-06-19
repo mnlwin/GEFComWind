@@ -1,9 +1,27 @@
-LoadRaw <- function (Task) {  
+LoadRaw <- function (Task, trainingWeek) {  
   
   ptm = proc.time()
   
   currwd = getwd()
-  setwd(paste(currwd,"/data/",Task,sep=""))
+  
+  #  If submitting this week's predictions, pull data from task week, 
+  #  Else temporarily change directories to prev week and pull training data length\
+  
+  if (task == trainingWeek){
+    
+    setwd(paste(currwd,"/data/",Task,sep=""))
+    prevTrainLength = 1
+    
+  } else {
+    setwd(paste(currwd,"/data/",trainingWeek,sep=""))
+    
+    SourceData = ReadData(trainingWeek)
+    prevTrainLength = SourceData$trainLength
+    rm(SourceData) 
+  
+    setwd(paste(currwd,"/data/",Task,sep=""))
+  }
+
   
   # Read in data from working directory and store
   
@@ -24,8 +42,8 @@ LoadRaw <- function (Task) {
   prevScoring.raw = vector('list',10)
   
   for (i in 1:10){
-    prevTrain.raw[[i]] = train.raw[[i]][1:prevTrain.length,]
-    prevScoring.raw[[i]] = train.raw[[i]][(prevTrain.length +1): trainLength,]
+    prevTrain.raw[[i]] = train.raw[[i]][1:prevTrainLength,]
+    prevScoring.raw[[i]] = train.raw[[i]][(prevTrainLength +1): trainLength,]
   }
   
   rawData = list('train.raw' = train.raw, 'test.raw' = test.raw, 

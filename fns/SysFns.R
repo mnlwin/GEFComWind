@@ -41,7 +41,7 @@ ReadData <-function(Task){
   
   #setwd(workingdir)
   writeLines('CSV files loaded ...\n')
-  Output=list("TrainingData"=TrainingData,"TestData"=TestData)
+  Output=list("TrainingData"=TrainingData,"TestData"=TestData, "trainLength" = trainLength, "testLength" = testLength)
   return(Output)
   
 }

@@ -22,11 +22,11 @@ require(DataCombine)
 
 #  Load Raw Data  ------------------------------------------------------------- 
 writeLines(paste('Data chosen from Week', task,'\n'))
-if (task == trainingWeek) {
+if (task == trainWeek) {
   
   writeLines('TEST data does not contain TARGETVAR --> test.raw will be used for SUBMITTAL')
   
-  rawData = LoadRaw(task)
+  rawData = LoadRaw(task,trainWeek)
   train.raw = rawData$train.raw
   test.raw = rawData$test.raw
   rm(rawData, trainLength, testLength)
@@ -35,15 +35,15 @@ if (task == trainingWeek) {
   
 } else {
   
-  writeLines(paste('TARGETVAR Data available for Week ',trainingWeek,'. ', 
-                   'Data will be will be used for SCORING Week ',trainingWeek, sep = ''))
+  writeLines(paste('TARGETVAR Data available for Week ',trainWeek,'. ', 
+                   'Data will be will be used for SCORING Week ',trainWeek, sep = ''))
   
-  rawData = LoadRaw(task)
+  rawData = LoadRaw(task,trainWeek)
   train.raw = rawData$prevTrain.raw
   test.raw = rawData$prevScoring.raw
   rm(rawData, trainLength, testLength)
   
-  writeLines(paste('Raw data of Week', trainingWeek,'loaded as "train.raw" and "test.raw"'))
+  writeLines(paste('Raw data of Week', trainWeek,'loaded as "train.raw" and "test.raw"'))
   
 }
 
