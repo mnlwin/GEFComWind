@@ -5,7 +5,7 @@
 for (i in nFarms){
   plot(testX[[i]]$Amp100,testY[[i]]$TARGETVAR, col ='blue')
   points(testX[[i]]$Amp100,predictions.test[[i]]$predictions, col ='red')
-  
+
   plot(testY[[i]]$TARGETVAR, col ='blue')
   lines(testY[[i]]$TARGETVAR, col ='blue')
   points(predictions.test[[i]]$predictions, col ='red')

@@ -4,7 +4,8 @@ TrainPredict <- function (trainX, trainY, testX, testY,
                          nTreesGBM = 1000, 
                          model = 'ensemble', 
                          tuneRF = 'n', 
-                         tuneGBM = 'cv', 
+                         tuneGBM = 'cv',
+                         distribution = 'gaussian',
                          train.frac.gbm = 1) {
   
   ptm = proc.time()
@@ -52,7 +53,7 @@ TrainPredict <- function (trainX, trainY, testX, testY,
       
     } else if (model == 'gbm'){
       # if GBM  ---------------------------------------------------------------
-      myfit.gbm = RunGBM(dataX, target.train, nTreesGBM, train.frac.gbm, tuneGBM)
+      myfit.gbm = RunGBM(dataX, target.train, nTreesGBM, train.frac.gbm, distribution, tuneGBM)
       best.iter[i]=myfit.gbm$best.iter
       myfit.gbm = myfit.gbm$myfit.gbm
       

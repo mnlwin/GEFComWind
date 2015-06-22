@@ -19,14 +19,21 @@ RunRF <- function(trainX, target.train,
 
 
 #  Generalized Boosted Regression Models  -------------------------------------
-RunGBM <- function(trainX, target.train, nTreesGBM, train.fraction.gbm, tuneGBM){
+RunGBM <- function(trainX, target.train, nTreesGBM, train.fraction.gbm, distribution, tuneGBM){
   
   writeLines('Training GBM...')
+  
+  if (distribution == 'quantile'){
+    distrib = list(name='quantile', alpha = .95)
+  } else {
+    distrib = distribution
+  }
+  
   myfit.gbm =
     gbm(target.train ~ .,                   # formula
         data = trainX,                      # dataset
         var.monotone = NULL,
-        distribution = "gaussian",          # see the help for other choices
+        distribution = distrib,        # see the help for other choices
         n.trees = nTreesGBM,                # number of trees
         shrinkage = 0.01,                   # shrinkage or learning rate,
                                             # 0.001 to 0.1 usually work

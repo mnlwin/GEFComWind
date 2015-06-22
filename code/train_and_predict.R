@@ -10,11 +10,12 @@
 
 model.train = TrainPredict(trainX, trainY, testX, testY,
                            farms = nFarms,                           
-                           nTreesRF = 150, 
-                           nTreesGBM = 1000, 
-                           model = 'rf', 
+                           nTreesRF = nTreesRF, 
+                           nTreesGBM = nTreesGBM, 
+                           model = model, 
                            tuneRF = 'n', 
                            tuneGBM = 'test',
+                           distribution = distribution,
                            train.frac.gbm = .8)
 predictions.test = model.train$predictions.test
 RMSE.test = model.train$RMSE.test
