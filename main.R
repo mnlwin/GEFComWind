@@ -9,10 +9,10 @@ cat("\014")
 task = 15                   # week for raw data
 trainWeek = 14              # week for training 
 nFarms = 10               # specify which farms to train and test (1-10)
-model = 'gbm'
+model = 'rf'
 nTreesRF = 150
 nTreesGBM = 1000
-distribution = 'quantile'
+distribution = 'gaussian'
 
 #  Run the code  --------------------------------------------------------------
 source("code/func.R")               #  load all functions

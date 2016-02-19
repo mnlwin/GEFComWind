@@ -7,9 +7,10 @@
 
 loss_total = c()
 
-for (i in 1:10){                                #for each wind farm
+for (i in nFarms){                                #for each wind farm
   loss_farm = 0
   L=0
+  lossVector = matrix(data =NA,length(pred_gauss_quant[[i]][,1]),99)
   for (j in 1:length(pred_gauss_quant[[i]][,1])){      #for each row of predictions
     for (a in 1:99){                            #for each quantile
       
@@ -21,11 +22,13 @@ for (i in 1:10){                                #for each wind farm
       if  (y<q){                                  #if observed is less than predicted, 
         L = (1-a/100)*(q-y)                     #calculate loss for cell
         loss_farm = loss_farm + L             #add this cell's loss to total loss
+        lossVector[j,a] = L
       }
       
       else if (y>=q){                             #if observed is greater/equal to predicted
         L = (a/100)*(y-q)                       #calculate loss for cell
         loss_farm = loss_farm + L             #add to total loss
+        lossVector[j,a] = L
       }
     }
   }

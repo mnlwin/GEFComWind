@@ -24,7 +24,7 @@ RunGBM <- function(trainX, target.train, nTreesGBM, train.fraction.gbm, distribu
   writeLines('Training GBM...')
   
   if (distribution == 'quantile'){
-    distrib = list(name='quantile', alpha = .95)
+    distrib = list(name='quantile', alpha = .90)
   } else {
     distrib = distribution
   }
